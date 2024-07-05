@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Interactive Navigation Menu</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        #navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        #navbar.scrolled {
+            background-color: #222;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        #navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #navbar .logo {
+            font-size: 20px;
+            font-weight: bold;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        #navbar .logo img {
+            border-radius: 50%;
+            width: 40px;  /* Adjust width as needed */
+            height: 40px; /* Adjust height as needed */
+            margin-left: 10px;
+        }
+
+        #navbar ul li {
+            position: relative;
+        }
+
+        #navbar ul li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 10px 15px;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        #navbar ul li a:hover {
+            background-color: #575757;
+            color: #ffcc00;
+        }
+
+        #navbar ul li .dropdown {
+            display: none;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            background-color: #333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #navbar ul li:hover .dropdown {
+            display: block;
+        }
+
+        #navbar ul li .dropdown a {
+            padding: 8px 15px;
+        }
+
+        #content {
+            padding-top: 60px; /* Ensure content is below the fixed navbar */
+        }
+
+        section {
+            height: 100vh;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #home {
+            background-color: #f4f4f4;
+        }
+
+        #about {
+            background-color: #e2e2e2;
+        }
+
+        #services {
+            background-color: #cccccc;
+        }
+
+        #contact {
+            background-color: #b2b2b2;
+        }
+
+        /* Adjust image styles if needed */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <ul>
+            <li class="logo">  <img src="https://t3.ftcdn.net/jpg/07/40/66/04/360_F_740660413_jMpbvqGDfKQfBfncRYnZRJT70rIRHIaX.jpg" alt="Logo">
+            Karthik Reddy</li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li>
+                <a href="#services">Services</a>
+                <div class="dropdown">
+                    <a href="#web-development">Web Development</a>
+                    <a href="#design">Design</a>
+                    <a href="#marketing">Marketing</a>
+                </div>
+            </li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <div id="content">
+        <section id="home"><h1><br>Home</h1>
+        <img src="https://t3.ftcdn.net/jpg/05/23/04/00/360_F_523040057_JYMTxoQGquklUthNLLjspI7ldR1hrFlH.jpg" alt="Home Image">
+        </section>
+        <section id="about"><h1><br>About Us</h1>
+    <p>Welcome to our website! We are a team of dedicated professionals passionate about delivering high-quality services to our clients. Our expertise spans across web development, design, and marketing, ensuring that we provide comprehensive solutions tailored to meet your unique needs.</p>
+    <p>Our mission is to empower businesses by creating innovative and effective digital solutions. We believe in the power of collaboration and strive to build long-lasting relationships with our clients based on trust and mutual success.</p>
+    <p>With years of experience in the industry, we take pride in our ability to adapt to the ever-changing digital landscape, ensuring that our clients stay ahead of the curve. Whether you are looking to establish a strong online presence, enhance your brand's image, or drive more traffic to your website, we are here to help you achieve your goals.</p>
+    <p>Thank you for choosing us as your trusted partner. We look forward to working with you and helping you succeed in your digital endeavors.</p>
+        </section>
+        <section id="services"><h1><br><br>Services</h1></section>
+        <section id="web-development"><h1><br>Web Development</h1></section>
+        <section id="design"><h1>Design</h1><br></section>
+        <section id="marketing"><h1><br>Marketing</h1></section>
+        <section id="contact"><h1><br>Contact</h1></section>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const navbar = document.getElementById("navbar");
+
+            // Change navbar style on scroll
+            window.addEventListener("scroll", function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add("scrolled");
+                } else {
+                    navbar.classList.remove("scrolled");
+                }
+            });
+
+            // Change link color on hover
+            const navLinks = document.querySelectorAll("#navbar ul li a");
+
+            navLinks.forEach(link => {
+                link.addEventListener("mouseover", function() {
+                    link.style.color = "#ffcc00";
+                });
+
+                link.addEventListener("mouseout", function() {
+                    link.style.color = "white";
+                });
+            });
+        });
+    </script>
+</body>
+</html>
